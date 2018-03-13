@@ -13,16 +13,16 @@
 
 
 
-<?php if(Auth::user()->privilegio != 1): ?>
+<?php if(Auth::user()->privilegio == 0): ?>
 
     <div class="col-lg-6">
 
-		    <?php  $sql = DB::select('SELECT nombre, convocatoria.idpublic, titulo, descripcion, fecha, fecha_ad FROM convocatoria, categoria, prov_conv WHERE convocatoria.idpublic=prov_conv.idpublic and convocatoria.idcat=categoria.idcat and prov_conv.id='.Auth::user()->id. ' Order by fecha_ad DESC LIMIT 5'); ?>
+        <?php  $sql = DB::select('SELECT nombre, convocatoria.idpublic, titulo, descripcion, fecha, fecha_ad FROM convocatoria, categoria, prov_conv WHERE convocatoria.idpublic=prov_conv.idpublic and convocatoria.idcat=categoria.idcat and prov_conv.id='.Auth::user()->id. ' Order by fecha_ad DESC LIMIT 5'); ?>
 
             
             <h3><i class="fa fa-star" aria-hidden="true" style="color: #FACB14;"></i> Convocatorias Adjudicadas
              <a href="<?php echo URL::to('convocatoriasaprobadas'); ?>"> <button class="btn btn-primary pull-right" style="font-size: 15px; background-color: black; border-color: black;">Ver Todas</button></a>
-            </h3>	
+            </h3> 
             
             <br>
 
@@ -58,11 +58,11 @@
  <?php endif; ?>  
 
 
-<?php if(Auth::user()->privilegio != 1): ?>
+<?php if(Auth::user()->privilegio == 0): ?>
 
       <div class="col-lg-6">
 
-      	<h3> Envíanos tu consulta </h3>
+        <h3> Envíanos tu consulta </h3>
 
         <?php echo Form::open(['route'=>'consulta.store', 'method'=>'POST']); ?>
 
@@ -103,14 +103,14 @@
 
 
 
-<?php if(Auth::user()->privilegio == 1): ?>
+<?php if((Auth::user()->privilegio == 1) || (Auth::user()->privilegio == 2)): ?>
 
 
         <div class="col-lg-1"></div>
 
         <div class="col-lg-3">
 
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-blue">
             <div class="inner">
               <?php  $nro = DB::select('select COUNT(*) as cant From convocatoria'); ?>
                 <?php foreach($nro as $res): ?>
@@ -131,7 +131,7 @@
 
         <div class="col-lg-3">
 
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-black">
             <div class="inner">
               <?php  $nro2 = DB::select('SELECT COUNT(*) as cant FROM convocatoria WHERE estado="activa" or estado="parcial"'); ?>
                 <?php foreach($nro2 as $res2): ?>

@@ -6,7 +6,7 @@
 @include('convocatoriasactivas.modalA')
 
 
-@if((Auth::user()->privilegio == 1) || (Auth::user()->privilegio == 2))
+@if(Auth::user()->privilegio == 1) 
 
 
   <div class="row">
@@ -54,7 +54,7 @@
         <center> <h2 style="text-transform: uppercase; font-weight: bold;"> Convocatorias Activas </h2> </center>
 
 
-@if(Auth::user()->privilegio != 1)||(Auth::user()->privilegio != 2))
+@if(Auth::user()->privilegio != 1)
 
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="table-responsive" style="overflow-x:inherit">
@@ -96,7 +96,7 @@
 
 
 
-@if((Auth::user()->privilegio == 1) || (Auth::user()->privilegio == 2))
+@if(Auth::user()->privilegio == 1) 
 
 
     

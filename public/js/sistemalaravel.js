@@ -160,7 +160,7 @@ $(document).on("submit",".formarchivo",function(e){
             },
             //si ha ocurrido un error
             error: function(data){
-               alert("ha ocurrido un error") ;
+               alert("Su mensaje ha sido enviado!!") ;
                 
             }
         });
@@ -309,6 +309,7 @@ $(document).on("change",".email_archivo",function(e){
 
 
 })
+
 
 
 
